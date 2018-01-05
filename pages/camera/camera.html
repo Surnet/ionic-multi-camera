@@ -1,0 +1,58 @@
+<!-- Header -->
+<ion-header no-border #header>
+  <ion-toolbar color="black">
+    <ion-buttons start>
+      <button ion-button icon-only clear (click)="showFlashOptions = !showFlashOptions">
+        <ion-icon name="flash"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-segment color="light" *ngIf="showFlashOptions" [(ngModel)]="activeFlashMode">
+      <ion-segment-button value="auto">
+        AUTO
+      </ion-segment-button>
+      <ion-segment-button value="on">
+        On
+      </ion-segment-button>
+      <ion-segment-button value="off">
+        Off
+      </ion-segment-button>
+    </ion-segment>
+
+    <ion-buttons end>
+      <button ion-button icon-only clear *ngIf="!showFlashOptions" (click)="switchCamera()">
+        <ion-icon name="reverse-camera"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Content -->
+<ion-content (click)="focus($event)"></ion-content>
+
+<!-- Footer -->
+<ion-footer no-border>
+  <!-- Picture Display -->
+  <ion-row nowrap justify-content-start align-items-center>
+    <ion-col *ngFor="let picture of pictures; let i = index" col-auto>
+      <img tappable [src]="'data:image/jpeg;base64,' + picture.base64Data" class="thumbnail" (click)="editPicture(picture, i)">
+    </ion-col>
+  </ion-row>
+
+  <!-- Footer Toolbar -->
+  <ion-toolbar color="black" class="footer-bar">
+    <ion-buttons start>
+      <button ion-button (click)="cancel()">
+        Cancel
+      </button>
+    </ion-buttons>
+    <button ion-button icon-only clear large color="light" (click)="takePicture()" class="photo-button">
+      <ion-icon name="ios-radio-button-on-outline"></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button (click)="finish()">
+        Finish
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

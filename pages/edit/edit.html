@@ -1,0 +1,25 @@
+<!-- Header -->
+<ion-header no-border #header>
+  <ion-toolbar color="black">
+    <ion-buttons start>
+      <button ion-button icon-only clear (click)="cancel()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-buttons end>
+      <button ion-button icon-only clear (click)="remove()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+      <button ion-button icon-only clear disabled=true></button>
+      <button ion-button icon-only clear (click)="rotateLeft()">
+        <ion-icon name="md-sync"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Content -->
+<ion-content>
+  <img [src]="'data:image/jpeg;base64,' + picture.base64Data">
+</ion-content>

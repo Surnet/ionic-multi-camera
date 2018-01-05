@@ -1,0 +1,36 @@
+ion-app, ion-content, .nav-decor {
+  background-color: transparent !important;
+}
+
+ionic-multi-camera {
+  // Photo Button
+  .photo-button {
+    font-size: 50px;
+
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  // Footer
+  .footer-bar {
+    padding-bottom: 30px;
+    padding-bottom: calc(30px + constant(safe-area-inset-bottom)) !important;
+    padding-bottom: calc(30px + env(safe-area-inset-bottom)) !important;
+
+    min-height: 110px;
+    min-height: calc(110px + constant(safe-area-inset-bottom)) !important;
+    min-height: calc(110px + env(safe-area-inset-bottom)) !important;
+  }
+
+  // Thumbnail Bar
+  ion-row {
+    overflow-x: scroll;
+  }
+  .thumbnail {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+  }
+}
