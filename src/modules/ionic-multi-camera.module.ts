@@ -1,7 +1,6 @@
 // Base Dependencies
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { IonicPageModule, NavController } from 'ionic-angular';
-import { shim } from 'promise.prototype.finally';
 
 // Ionic Native plugins
 import { StatusBar } from '@ionic-native/status-bar';
@@ -10,14 +9,11 @@ import { File } from '@ionic-native/file';
 import { DeviceMotion } from '@ionic-native/device-motion';
 
 // Components
-import { CameraComponent } from './pages/camera/camera';
-import { EditComponent } from './pages/edit/edit';
+import { CameraComponent } from '../pages/camera/camera';
+import { EditComponent } from '../pages/edit/edit';
 
 // Providers
-import { IonicMultiCamera } from './providers/ionic-multi-camera';
-export { IonicMultiCamera } from './providers/ionic-multi-camera';
-
-shim();
+import { IonicMultiCamera } from '../providers/ionic-multi-camera';
 
 @NgModule({
   declarations: [

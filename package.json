@@ -1,0 +1,65 @@
+{
+  "name": "ionic-multi-camera",
+  "description": "Take multiple photos one after another",
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Daniel Müller",
+    "email": "daniel.mueller@surnet.ch",
+    "url": "https://github.com/chdanielmueller"
+  },
+  "homepage": "https://github.com/Surnet/ionic-multi-camera",
+  "bugs": {
+    "url": "https://github.com/Surnet/ionic-multi-camera/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Surnet/ionic-multi-camera.git"
+  },
+  "keywords": [
+    "ionic",
+    "multi",
+    "image",
+    "picture",
+    "photo",
+    "camera"
+  ],
+  "main": "dist/index.umd.js",
+  "jsnext:main": "dist/index.esm.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "bundle": "rimraf dist && rollup -c rollup.config.umd.js && rollup -c rollup.config.esm.js && tsc && ngc"
+  },
+  "devDependencies": {
+    "@angular/common": "^4.4.3",
+    "@angular/compiler": "^4.4.3",
+    "@angular/compiler-cli": "^4.4.3",
+    "@angular/core": "^4.4.3",
+    "@angular/forms": "^4.4.3",
+    "@angular/platform-browser": "^4.4.3",
+    "@ionic-native/camera-preview": "^4.5.2",
+    "@ionic-native/core": "^4.5.2",
+    "@ionic-native/device-motion": "^4.5.2",
+    "@ionic-native/file": "^4.5.2",
+    "@ionic-native/status-bar": "^4.5.2",
+    "ionic-angular": "^3.9.2",
+    "node-sass": "^4.7.2",
+    "rollup": "^0.53.3",
+    "rollup-plugin-angular": "^0.5.3",
+    "rollup-plugin-commonjs": "^8.2.6",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-typescript": "^0.8.1",
+    "rxjs": "^5.5.2",
+    "typescript": "^2.5.3",
+    "zone.js": "^0.8.18"
+  },
+  "peerDependencies": {
+    "@angular/core": "*",
+    "@ionic-native/camera-preview": ">=4.5.2",
+    "@ionic-native/device-motion": ">=4.5.2",
+    "@ionic-native/file": ">=4.5.2",
+    "@ionic-native/status-bar": ">=4.5.2",
+    "ionic-angular": ">=3.9.2"
+  }
+}

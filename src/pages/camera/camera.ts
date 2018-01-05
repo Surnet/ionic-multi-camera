@@ -1,7 +1,7 @@
 // Base Dependencies
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NavController, NavParams, MenuController, normalizeURL } from 'ionic-angular';
-import * as uuid from 'uuid/v1';
+import uuid from 'uuid/v1';
 
 // Ionic Native plugins
 import { StatusBar } from '@ionic-native/status-bar';
@@ -30,7 +30,7 @@ export class CameraComponent {
 
   @ViewChild('header') header: ElementRef;
 
-  private pictures: Array<Picture> = [];
+  public pictures: Array<Picture> = [];
   private callback: (data: PictureResult) => Promise<void>;
 
   private deviceOrientation: DeviceMotionAccelerationData;
@@ -197,20 +197,18 @@ export class CameraComponent {
       alpha: 1
     };
 
-    let startedCamera = false;
     this.cameraPreview.startCamera(cameraPreviewOpts)
     .then(() => {
-      startedCamera = true;
+      this.cameraPreview.setFlashMode('auto')
+      .then(() => {
+
+      })
+      .catch(err => {
+        this.errorHandler(err);
+      });
     })
     .catch(err => {
       if (err === 'Camera already started!') {
-        startedCamera = true;
-      } else {
-        this.errorHandler(err);
-      }
-    })
-    .finally(() => {
-      if (startedCamera) {
         this.cameraPreview.setFlashMode('auto')
         .then(() => {
 
@@ -218,6 +216,8 @@ export class CameraComponent {
         .catch(err => {
           this.errorHandler(err);
         });
+      } else {
+        this.errorHandler(err);
       }
     });
   }
