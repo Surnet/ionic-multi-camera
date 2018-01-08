@@ -1,26 +1,22 @@
 {
-  "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "./dist",
-    "baseUrl": "./",
-    "sourceMap": true,
-    "allowSyntheticDefaultImports": true,
-    "declaration": true,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    "module": "es2015",
     "target": "es5",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2015",
-      "dom"
-    ],
-    "module": "es2015"
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "inlineSources": true,
+    "declaration": true,
+    "noImplicitAny": false,
+    "experimentalDecorators": true,
+    "lib": ["dom", "es2015"],
+    "outDir": "dist"
   },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "scripts"
+  ],
   "angularCompilerOptions": {
-    "strictMetadataEmit": true,
-    "genDir": "./dist"
+    "genDir": "aot"
   }
 }
