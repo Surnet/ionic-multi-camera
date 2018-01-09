@@ -6,6 +6,7 @@ import { CameraPreviewPictureOptions } from '@ionic-native/camera-preview';
 // Classes
 import { Picture } from '../classes/picture';
 import { PictureResult } from '../classes/picture-result';
+import { CameraTranslations } from '../classes/translations';
 
 // Components
 import { CameraComponent } from '../pages/camera/camera';
@@ -21,7 +22,7 @@ export class IonicMultiCamera {
     this.navCtrl = this.app.getActiveNavs()[0];
   }
 
-  public getPicture(pictureOptions?: CameraPreviewPictureOptions): Promise<Array<Picture>> {
+  public getPicture(pictureOptions?: CameraPreviewPictureOptions, translations?: CameraTranslations): Promise<Array<Picture>> {
     return new Promise<Array<Picture>>((resolve, reject) => {
       const getData = (data: PictureResult): Promise<void> => {
         if (data.error) {
@@ -34,7 +35,8 @@ export class IonicMultiCamera {
 
       this.navCtrl.push(CameraComponent, {
         callback: getData,
-        pictureOptions
+        pictureOptions,
+        translations
       });
     });
   }

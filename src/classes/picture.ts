@@ -1,6 +1,6 @@
 import { FileEntry } from '@ionic-native/file';
 
-export class Picture {
+export interface Picture {
   normalizedURL: string;
   fileEntry: FileEntry;
   base64Data: string;

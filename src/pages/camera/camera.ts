@@ -15,6 +15,7 @@ import { Subscription } from 'rxjs/Subscription';
 // Classes
 import { Picture } from '../../classes/picture';
 import { PictureResult } from '../../classes/picture-result';
+import { CameraTranslations } from '../../classes/translations';
 
 // Components
 import { EditComponent } from '../edit/edit';
@@ -34,6 +35,7 @@ export class CameraComponent {
   public pictures: Array<Picture> = [];
   private callback: (data: PictureResult) => Promise<void>;
   private pictureOptions: CameraPreviewPictureOptions;
+  public translations: CameraTranslations;
 
   private deviceOrientation: DeviceMotionAccelerationData;
   private motionSubscription: Subscription;
@@ -71,6 +73,13 @@ export class CameraComponent {
       quality: 80,
       width: 4096,
       height: 4096
+    };
+    this.translations = this.navParams.get('translations') || {
+      cancel: 'Cancel',
+      finish: 'Finish',
+      auto: 'AUTO',
+      on: 'On',
+      off: 'Off'
     };
   }
 

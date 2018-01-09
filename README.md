@@ -1,5 +1,10 @@
 # ionic-multi-camera
 
+This package allows an Ionic App to take multiple photos in one go.
+
+The [Camera Plugin](https://ionicframework.com/docs/native/camera/) allows to take one photo per go.
+Whereas this package allows to take multiple photos in a row and confirm all of them at once.
+
 ## Example
 
 ![Camera on iPhone X](docs/iPhoneX_Camera.png)
@@ -104,7 +109,11 @@ export class Example {
 If you would like to you can pass CameraPreviewPictureOptions directly to the camera.
 This allows to set the expected quality of the pictures.
 
+It also accepts an object containing [Translations](src/classes/translations.ts) for the camera.
+Otherwise defaults to English.
+
 ```ts
+import { IonicMultiCamera, Picture, CameraTranslations } from 'ionic-multi-camera';
 import { CameraPreviewPictureOptions } from '@ionic-native/camera-preview';
 ...
 
@@ -113,6 +122,13 @@ const pictureOptions: CameraPreviewPictureOptions = {
   quality: 80,
   width: 4096,
   height: 4096
+};
+const translations: CameraTranslations = {
+  cancel: 'Cancel',
+  finish: 'Finish',
+  auto: 'AUTO',
+  on: 'On',
+  off: 'Off'
 };
 this.camera.getPicture(pictureOptions)
 .then((pictures: Array<Picture>) => {

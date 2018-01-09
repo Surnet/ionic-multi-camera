@@ -9,13 +9,13 @@
 
     <ion-segment color="light" *ngIf="showFlashOptions" [(ngModel)]="activeFlashMode">
       <ion-segment-button value="auto">
-        AUTO
+        {{ translations.auto }}
       </ion-segment-button>
       <ion-segment-button value="on">
-        On
+        {{ translations.on }}
       </ion-segment-button>
       <ion-segment-button value="off">
-        Off
+        {{ translations.off }}
       </ion-segment-button>
     </ion-segment>
 
@@ -43,7 +43,7 @@
   <ion-toolbar color="camera" class="footer-bar">
     <ion-buttons start>
       <button ion-button (click)="cancel()">
-        Cancel
+        {{ translations.cancel }}
       </button>
     </ion-buttons>
     <button ion-button icon-only clear large color="light" (click)="takePicture()" class="photo-button">
@@ -51,7 +51,7 @@
     </button>
     <ion-buttons end>
       <button ion-button (click)="finish()">
-        Finish
+        {{ translations.finish }}
       </button>
     </ion-buttons>
   </ion-toolbar>

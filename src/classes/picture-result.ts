@@ -1,6 +1,6 @@
 import { Picture } from './picture';
 
-export class PictureResult {
+export interface PictureResult {
   pictures?: Array<Picture>;
   error?: any;
 }
