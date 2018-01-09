@@ -10,7 +10,7 @@ npm install --save ionic-multi-camera
 # Install Ionic Native Plugins
 npm install --save @ionic-native/core @ionic-native/camera-preview @ionic-native/device-motion @ionic-native/file @ionic-native/status-bar
 # Install Cordova Plugins
-ionic cordova plugin add cordova-plugin-camera-preview
+ionic cordova plugin add https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview.git
 ionic cordova plugin add cordova-plugin-device-motion
 ionic cordova plugin add cordova-plugin-file
 ionic cordova plugin add cordova-plugin-statusbar
