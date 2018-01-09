@@ -6,6 +6,7 @@
 # compiled output
 /tmp
 /out-tsc
+/docs
 
 # dependencies
 /node_modules
@@ -42,3 +43,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Other
+.editorconfig
+gulpfile.js
+tsconfig.json
+tslint.json

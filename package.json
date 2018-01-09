@@ -1,7 +1,7 @@
 {
   "name": "ionic-multi-camera",
   "description": "Take multiple photos one after another",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "author": {
     "name": "Daniel Müller",

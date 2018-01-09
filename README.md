@@ -1,5 +1,10 @@
 # ionic-multi-camera
 
+## Example
+
+![Camera on iPhone X](docs/iPhoneX_Camera.png)
+![Editor on iPhone X](docs/iPhoneX_Editor.png)
+
 ## Install
 
 To use this package you need to install the Cordova and Ionic Native Plugins it depends on.
