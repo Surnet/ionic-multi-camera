@@ -10,7 +10,8 @@ import { base64toBlob, rotateBase64Image } from '../../helpers/picture-mutations
 
 @Component({
   selector: 'ionic-multi-edit',
-  templateUrl: 'edit.html'
+  templateUrl: 'edit.html',
+  styleUrls: ['edit.scss']
 })
 export class EditComponent {
 

@@ -24,7 +24,8 @@ import { base64toBlob, rotateBase64Image } from '../../helpers/picture-mutations
 
 @Component({
   selector: 'ionic-multi-camera',
-  templateUrl: 'camera.html'
+  templateUrl: 'camera.html',
+  styleUrls: ['camera.scss']
 })
 export class CameraComponent {
 

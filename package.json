@@ -29,7 +29,8 @@
   "files": "dist",
   "scripts": {
     "ngc": "ngc",
-    "build": "rm -rf aot dist && npm run ngc",
+    "gulp": "gulp",
+    "build": "rm -rf dist tmp && npm run gulp && npm run ngc",
     "publishPackage": "npm run build && npm publish"
   },
   "devDependencies": {
@@ -46,6 +47,9 @@
     "@ionic-native/file": "^4.5.2",
     "@ionic-native/status-bar": "^4.5.2",
     "@types/node": "^8.5.7",
+    "gulp": "^3.9.1",
+    "gulp-angular-embed-templates": "^2.3.0",
+    "gulp-angular2-embed-sass": "^0.5.1",
     "ionic-angular": "^3.9.2",
     "rxjs": "^5.5.2",
     "typescript": "^2.5.3",

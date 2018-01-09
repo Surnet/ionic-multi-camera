@@ -1,22 +1,31 @@
 {
   "compilerOptions": {
-    "module": "es2015",
     "target": "es5",
+    "module": "es2015",
     "moduleResolution": "node",
     "sourceMap": true,
-    "inlineSources": true,
     "declaration": true,
     "noImplicitAny": false,
+    "inlineSources": true,
     "experimentalDecorators": true,
-    "lib": ["dom", "es2015"],
-    "outDir": "dist"
+    "emitDecoratorMetadata": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "pretty": true,
+    "stripInternal": true,
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "rootDir": "./tmp",
+    "lib": ["dom", "es2015"]
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "scripts"
+  "files": [
+    "./tmp/index.ts"
   ],
   "angularCompilerOptions": {
-    "genDir": "aot"
+    "genDir": "dist",
+    "debug": false,
+    "skipTemplateCodegen": true,
+    "skipMetadataEmit": false,
+    "strictMetadataEmit": true
   }
 }

@@ -1,18 +1,16 @@
-ionic-multi-edit {
-  ion-content {
-    background-color: black !important;
-    .scroll-content {
-      overflow-y: hidden;
-    }
+ion-content {
+  background-color: black !important;
+  .scroll-content {
+    overflow-y: hidden;
   }
+}
 
-  img {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: calc(0px + constant(safe-area-inset-bottom));
-    bottom: calc(0px + env(safe-area-inset-bottom));
-  }
+img {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: calc(0px + constant(safe-area-inset-bottom));
+  bottom: calc(0px + env(safe-area-inset-bottom));
 }
