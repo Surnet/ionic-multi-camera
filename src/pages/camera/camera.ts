@@ -219,7 +219,7 @@ export class CameraComponent {
       });
     })
     .catch(err => {
-      if (err === 'Camera already started!') {
+      if (err.indexOf('Camera already started') !== -1) {
         this.cameraPreview.setFlashMode('auto')
         .then(() => {
 
