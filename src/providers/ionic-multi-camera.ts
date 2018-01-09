@@ -1,6 +1,7 @@
 // Base Dependencies
 import { Injectable } from '@angular/core';
 import { App, NavController } from 'ionic-angular';
+import { CameraPreviewPictureOptions } from '@ionic-native/camera-preview';
 
 // Classes
 import { Picture } from '../classes/picture';
@@ -20,7 +21,7 @@ export class IonicMultiCamera {
     this.navCtrl = this.app.getActiveNavs()[0];
   }
 
-  public getPicture(): Promise<Array<Picture>> {
+  public getPicture(pictureOptions?: CameraPreviewPictureOptions): Promise<Array<Picture>> {
     return new Promise<Array<Picture>>((resolve, reject) => {
       const getData = (data: PictureResult): Promise<void> => {
         if (data.error) {
@@ -32,7 +33,8 @@ export class IonicMultiCamera {
       };
 
       this.navCtrl.push(CameraComponent, {
-        callback: getData
+        callback: getData,
+        pictureOptions
       });
     });
   }

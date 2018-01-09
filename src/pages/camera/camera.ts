@@ -33,6 +33,7 @@ export class CameraComponent {
 
   public pictures: Array<Picture> = [];
   private callback: (data: PictureResult) => Promise<void>;
+  private pictureOptions: CameraPreviewPictureOptions;
 
   private deviceOrientation: DeviceMotionAccelerationData;
   private motionSubscription: Subscription;
@@ -66,6 +67,11 @@ export class CameraComponent {
     private deviceMotion: DeviceMotion
   ) {
     this.callback = this.navParams.get('callback');
+    this.pictureOptions = this.navParams.get('pictureOptions') || {
+      quality: 80,
+      width: 4096,
+      height: 4096
+    };
   }
 
   public ionViewWillEnter(): void {
@@ -128,12 +134,7 @@ export class CameraComponent {
   }
 
   public takePicture(): void {
-    const pictureOptions: CameraPreviewPictureOptions = {
-      quality: 80,
-      width: 4096,
-      height: 4096
-    };
-    this.cameraPreview.takePicture(pictureOptions)
+    this.cameraPreview.takePicture(this.pictureOptions)
     .then(async picture => {
       picture = await this.rotateImageBasedOnOrientation(picture);
       const fileOptions: IWriteOptions = {

@@ -93,3 +93,26 @@ export class Example {
 
 }
 ```
+
+If you would like to you can pass CameraPreviewPictureOptions directly to the camera.
+This allows to set the expected quality of the pictures.
+
+```ts
+import { CameraPreviewPictureOptions } from '@ionic-native/camera-preview';
+...
+
+...
+const pictureOptions: CameraPreviewPictureOptions = {
+  quality: 80,
+  width: 4096,
+  height: 4096
+};
+this.camera.getPicture(pictureOptions)
+.then((pictures: Array<Picture>) => {
+  ...
+})
+.catch(err => {
+  console.error(err);
+});
+...
+```
