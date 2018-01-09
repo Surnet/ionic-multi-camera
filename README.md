@@ -2,8 +2,13 @@
 
 This package allows an Ionic App to take multiple photos in one go.
 
-The [Camera Plugin](https://ionicframework.com/docs/native/camera/) allows to take one photo per go.
+The "standard" [Camera Plugin](https://ionicframework.com/docs/native/camera/) allows to take one photo per go.
 Whereas this package allows to take multiple photos in a row and confirm all of them at once.
+
+Supports iOS and Android
+
+[![npm Version](https://img.shields.io/npm/v/ionic-multi-camera.svg)](https://www.npmjs.com/package/ionic-multi-camera)
+[![npm Downloads](https://img.shields.io/npm/dm/ionic-multi-camera.svg)](https://www.npmjs.com/package/ionic-multi-camera)
 
 ## Example
 
@@ -12,11 +17,15 @@ Whereas this package allows to take multiple photos in a row and confirm all of 
 
 ## Install
 
+First install the package from npm.
+
+```bash
+npm install --save ionic-multi-camera
+```
+
 To use this package you need to install the Cordova and Ionic Native Plugins it depends on.
 
 ```bash
-# Install ionic-multi-camera
-npm install --save ionic-multi-camera
 # Install Ionic Native Plugins
 npm install --save @ionic-native/core @ionic-native/camera-preview @ionic-native/device-motion @ionic-native/file @ionic-native/status-bar
 # Install Cordova Plugins

@@ -1,7 +1,7 @@
 <!-- Header -->
 <ion-header no-border #header>
   <ion-toolbar color="camera">
-    <ion-buttons start>
+    <ion-buttons left>
       <button ion-button icon-only clear (click)="showFlashOptions = !showFlashOptions">
         <ion-icon name="flash"></ion-icon>
       </button>
@@ -19,7 +19,7 @@
       </ion-segment-button>
     </ion-segment>
 
-    <ion-buttons end>
+    <ion-buttons right>
       <button ion-button icon-only clear *ngIf="!showFlashOptions" (click)="switchCamera()">
         <ion-icon name="reverse-camera"></ion-icon>
       </button>
@@ -41,7 +41,7 @@
 
   <!-- Footer Toolbar -->
   <ion-toolbar color="camera" class="footer-bar">
-    <ion-buttons start>
+    <ion-buttons left>
       <button ion-button (click)="cancel()">
         {{ translations.cancel }}
       </button>
@@ -49,7 +49,7 @@
     <button ion-button icon-only clear large color="light" (click)="takePicture()" class="photo-button">
       <ion-icon name="ios-radio-button-on-outline"></ion-icon>
     </button>
-    <ion-buttons end>
+    <ion-buttons right>
       <button ion-button (click)="finish()">
         {{ translations.finish }}
       </button>
