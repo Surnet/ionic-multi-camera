@@ -5,8 +5,10 @@
 To use this package you need to install the Cordova and Ionic Native Plugins it depends on.
 
 ```bash
+# Install ionic-multi-camera
+npm install --save ionic-multi-camera
 # Install Ionic Native Plugins
-npm install @ionic-native/core @ionic-native/camera-preview @ionic-native/device-motion @ionic-native/file @ionic-native/status-bar
+npm install --save @ionic-native/core @ionic-native/camera-preview @ionic-native/device-motion @ionic-native/file @ionic-native/status-bar
 # Install Cordova Plugins
 ionic cordova plugin add cordova-plugin-camera-preview
 ionic cordova plugin add cordova-plugin-device-motion
