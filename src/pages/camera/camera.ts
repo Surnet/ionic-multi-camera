@@ -111,7 +111,15 @@ export class CameraComponent {
 
   public focus(event) {
     const headerHeight = this.header.nativeElement.offsetHeight;
-    this.cameraPreview.tapToFocus(event.offsetX, event.offsetY + headerHeight);
+    const xPoint: number = event.offsetX;
+    const yPoint: number = event.offsetY + headerHeight;
+    this.cameraPreview.tapToFocus(xPoint, yPoint)
+    .then(() => {
+
+    })
+    .catch(err => {
+      this.errorHandler(err);
+    });
   }
 
   public switchCamera(): void {
