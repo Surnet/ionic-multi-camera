@@ -31,6 +31,7 @@ import { base64toBlob, rotateBase64Image } from '../../helpers/picture-mutations
 export class CameraComponent {
 
   @ViewChild('header') header: ElementRef;
+  @ViewChild('footer') footer: ElementRef;
 
   public pictures: Array<Picture> = [];
   private callback: (data: PictureResult) => Promise<void>;
@@ -111,14 +112,15 @@ export class CameraComponent {
 
   public focus(event) {
     const headerHeight = this.header.nativeElement.offsetHeight;
+    const footerHeight = this.footer.nativeElement.offsetHeight;
     const xPoint: number = event.offsetX;
-    const yPoint: number = event.offsetY + headerHeight;
+    const yPoint: number = (event.offsetY - headerHeight) / (window.screen.height - headerHeight - footerHeight) * window.screen.height;
     this.cameraPreview.tapToFocus(xPoint, yPoint)
     .then(() => {
 
     })
     .catch(err => {
-      this.errorHandler(err);
+      console.error(err);
     });
   }
 
@@ -152,12 +154,14 @@ export class CameraComponent {
 
   public takePicture(): void {
     this.cameraPreview.takePicture(this.pictureOptions)
-    .then(async picture => {
-      picture = await this.rotateImageBasedOnOrientation(picture);
+    .then(picture => {
+      return this.rotateImageBasedOnOrientation(picture);
+    })
+    .then(picture => {
       const fileOptions: IWriteOptions = {
         replace: true
       };
-      this.file.writeFile(this.file.cacheDirectory, uuid() + '.jpeg', base64toBlob(picture, 'image/jpeg'), fileOptions)
+      return this.file.writeFile(this.file.cacheDirectory, uuid() + '.jpeg', base64toBlob(picture, 'image/jpeg'), fileOptions)
       .then(fileEntry => {
         const normalizedURL = normalizeURL(fileEntry.toURL());
         this.pictures.push({
@@ -204,11 +208,13 @@ export class CameraComponent {
   }
 
   private startCam(): void {
+    const headerHeight = this.header.nativeElement.offsetHeight;
+    const footerHeight = this.footer.nativeElement.offsetHeight;
     const cameraPreviewOpts: CameraPreviewOptions = {
       x: 0,
-      y: 0,
+      y: headerHeight,
       width: window.screen.width,
-      height: window.screen.height,
+      height: window.screen.height - headerHeight - footerHeight,
       camera: 'rear',
       tapPhoto: false,
       previewDrag: false,
