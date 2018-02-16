@@ -153,10 +153,8 @@ export class CameraComponent {
   }
 
   public takePicture(): void {
+    const imageOrientation = this.getImageOrientation();
     this.cameraPreview.takePicture(this.pictureOptions)
-    .then(picture => {
-      return this.rotateImageBasedOnOrientation(picture);
-    })
     .then(picture => {
       const fileOptions: IWriteOptions = {
         replace: true
@@ -167,7 +165,8 @@ export class CameraComponent {
         this.pictures.push({
           fileEntry,
           normalizedURL,
-          base64Data: picture
+          base64Data: picture,
+          imageOrientation
         });
       })
       .catch(err => {
@@ -180,7 +179,46 @@ export class CameraComponent {
   }
 
   public finish(): void {
-    this.exit();
+    const promises = [];
+    this.pictures.forEach(picture => {
+      promises.push(
+        new Promise((resolve, reject) => {
+          rotateBase64Image(picture.base64Data, picture.imageOrientation)
+          .then(imageData => {
+            picture.imageOrientation = 0;
+            picture.base64Data = imageData;
+            picture.fileEntry.createWriter(fileWriter => {
+              fileWriter.onwriteend = () => {
+                resolve(picture);
+              };
+              fileWriter.onerror = function (e) {
+                reject(e);
+              };
+              const file: Blob = base64toBlob(imageData, 'image/jpeg');
+              fileWriter.truncate(file.size);
+              fileWriter.write(file);
+            }, err => {
+              reject(err);
+            });
+          })
+          .catch(err => {
+            reject(err);
+          });
+        })
+      );
+    });
+
+    Promise.all(promises)
+    .then(results => {
+      this.callback({
+        pictures: results
+      });
+      this.doesExit = true;
+      this.navCtrl.pop();
+    })
+    .catch(err => {
+      this.errorHandler(err);
+    });
   }
 
   public editPicture(picture: Picture, index: number): void {
@@ -251,30 +289,26 @@ export class CameraComponent {
     this.cameraPreview.stopCamera();
   }
 
-  private rotateImageBasedOnOrientation(imageData: string): Promise<string> {
+  private getImageOrientation(): number {
     if (this.deviceOrientation) {
       // If landscape
       if (Math.abs(this.deviceOrientation.x) > Math.abs(this.deviceOrientation.y)) {
         if (this.deviceOrientation.x > 0) {
-          return rotateBase64Image(imageData, 270);
+          return 270;
         } else {
-          return rotateBase64Image(imageData, 90);
+          return 90;
         }
       } else {
         // Portrait upside-down
         if (this.deviceOrientation.y < 0) {
-          return rotateBase64Image(imageData, 180);
+          return 180;
         } else {
           // Right-side up
-          return new Promise((resolve) => {
-            resolve(imageData);
-          });
+          return 0;
         }
       }
     } else {
-      return new Promise((resolve) => {
-        resolve(imageData);
-      });
+      return 0;
     }
   }
 
