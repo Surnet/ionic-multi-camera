@@ -31,11 +31,11 @@
 <ion-content (click)="focus($event)"></ion-content>
 
 <!-- Footer -->
-<ion-footer no-border>
+<ion-footer no-border #footer>
   <!-- Picture Display -->
   <ion-row nowrap justify-content-start align-items-center>
     <ion-col *ngFor="let picture of pictures; let i = index" col-auto>
-      <img tappable [src]="'data:image/jpeg;base64,' + picture.base64Data" class="thumbnail" (click)="editPicture(picture, i)">
+      <img tappable [src]="'data:image/jpeg;base64,' + picture.base64Data" [style.transform]="'rotate(' + picture.imageOrientation + 'deg)'" class="thumbnail" (click)="editPicture(picture, i)">
     </ion-col>
   </ion-row>
 
