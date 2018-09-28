@@ -1,3 +1,7 @@
+# Unmaintained
+
+This project is no longer maintained.
+
 # ionic-multi-camera
 
 This package allows an Ionic App to take multiple photos in one go.
